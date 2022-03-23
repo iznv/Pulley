@@ -1153,8 +1153,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      Mask backgroundDimmingView layer to avoid drawer background beeing darkened.
      */
     private func maskBackgroundDimmingView() {
-        let cutoutHeight = 2 * drawerCornerRadius
-        let maskHeight = backgroundDimmingView.bounds.size.height - cutoutHeight - drawerScrollView.contentSize.height
+        let maskHeight = backgroundDimmingView.bounds.size.height - drawerScrollView.contentSize.height
         let borderPath = drawerMaskingPath(byRoundingCorners: [.topLeft, .topRight])
         
         // This applys the boarder path transform to the minimum x of the content container for iPhone X size devices
@@ -1259,9 +1258,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
      - returns: a frame for moving backgroundDimmingView according to drawer position
      */
     private func backgroundDimmingViewFrameForDrawerPosition(_ drawerPosition: CGFloat) -> CGRect {
-        let cutoutHeight = (2 * drawerCornerRadius)
         var backgroundDimmingViewFrame = backgroundDimmingView.frame
-        backgroundDimmingViewFrame.origin.y = 0 - drawerPosition + cutoutHeight
+        backgroundDimmingViewFrame.origin.y = 0 - drawerPosition
 
         return backgroundDimmingViewFrame
     }
